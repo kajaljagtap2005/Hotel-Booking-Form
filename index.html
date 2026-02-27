@@ -16,3 +16,46 @@
       <h1 class="text-6xl font-extrabold text-amber-300">Lumina Resort</h1>
       <p class="text-teal-300 text-2xl mt-3">Luxury Awaits You</p>
     </div>
+
+    <div class="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden animate-slide-up">
+      <div class="bg-gradient-to-r from-teal-800/80 to-indigo-800/80 px-10 py-12 text-center">
+        <h2 class="text-4xl font-bold text-amber-200">Reserve Your Escape</h2>
+      </div>
+
+      <form id="bookingForm" class="p-10 space-y-10">
+        <!-- Guest Details -->
+        <div class="space-y-6">
+          <h3 class="text-2xl font-semibold text-amber-200">Guest Details</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="relative">
+              <input type="text" id="fullName" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "/>
+              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Full Name *</label>
+            </div>
+            <div class="relative">
+              <input type="tel" id="phone" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "/>
+              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Phone Number *</label>
+            </div>
+          </div>
+          <div class="relative">
+            <input type="email" id="email" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "/>
+            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Email Address *</label>
+          </div>
+          <div class="relative">
+            <textarea id="address" rows="2" class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-3xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "></textarea>
+            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Address (Optional)</label>
+          </div>
+        </div>
+
+        <!-- Booking Details (PDF exact) -->
+        <div class="space-y-6">
+          <h3 class="text-2xl font-semibold text-amber-200">Booking Details</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="relative">
+              <input type="date" id="checkin" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
+              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Check-in Date *</label>
+            </div>
+            <div class="relative">
+              <input type="date" id="checkout" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
+              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Check-out Date *</label>
+            </div>
+          </div>
