@@ -59,3 +59,32 @@
               <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Check-out Date *</label>
             </div>
           </div>
+
+          <div class="relative">
+            <select id="roomType" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg appearance-none">
+              <option value="" disabled selected>Select Room Type</option>
+              <option value="Single" class="bg-green-900 text-white">Single</option>
+              <option value="Double" class="bg-blue-900 text-white">Double</option>
+              <option value="Suite" class="bg-purple-900 text-white">Suite</option>
+              <option value="Deluxe" class="bg-amber-900 text-white">Deluxe</option>
+            </select>
+            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Room Type *</label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="relative">
+              <input type="number" id="adults" min="1" value="2" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
+              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Adults *</label>
+            </div>
+            <div class="relative">
+              <input type="number" id="children" min="0" value="0" class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
+              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Children</label>
+            </div>
+          </div>
+
+          <div class="relative">
+            <textarea id="requests" rows="3" class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-3xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg resize-none" placeholder=" "></textarea>
+            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Special Requests (Optional)</label>
+          </div>
+        </div>
+
