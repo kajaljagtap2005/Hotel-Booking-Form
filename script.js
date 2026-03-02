@@ -1,5 +1,5 @@
 // EmailJS init 
-emailjs.init("YOUR_PUBLIC_KEY");  
+emailjs.init("PUBLIC_KEY");  
 
 const form = document.getElementById('bookingForm');
 const successModal = document.getElementById('successModal');
