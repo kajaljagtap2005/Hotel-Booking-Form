@@ -26,7 +26,6 @@ function calculatePrice() {
     priceBox.classList.add('hidden');
     return;
   }
-
   const ci = new Date(checkin.value);
   const co = new Date(checkout.value);
   const nights = Math.ceil((co - ci) / (1000 * 60 * 60 * 24));
