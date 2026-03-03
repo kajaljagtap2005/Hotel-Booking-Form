@@ -3,96 +3,107 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Lumina Resort • Book Your Stay</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body class="bg-gradient-to-br from-indigo-950 via-purple-950 to-teal-950 min-h-screen py-12 px-4">
+  <title>Hotel Booking Form – Internship Task</title>
 
-  <div class="max-w-3xl mx-auto">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Font Awesome icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-gradient-to-br from-indigo-950 via-purple-950 to-pink-950 min-h-screen text-gray-100">
+
+  <div class="max-w-4xl mx-auto px-5 py-12">
+
     <div class="text-center mb-12 animate-fade-in-down">
-      <h1 class="text-6xl font-extrabold text-amber-300">Lumina Resort</h1>
-      <p class="text-teal-300 text-2xl mt-3">Luxury Awaits You</p>
+      <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+        Luxe Horizon Hotel
+      </h1>
+      <p class="text-xl text-cyan-300 mt-3">Book Your Dream Stay</p>
     </div>
 
-    <div class="bg-white/10 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 overflow-hidden animate-slide-up">
-      <div class="bg-gradient-to-r from-teal-800/80 to-indigo-800/80 px-10 py-12 text-center">
-        <h2 class="text-4xl font-bold text-amber-200">Reserve Your Escape</h2>
+    <div class="glass-card rounded-3xl shadow-2xl overflow-hidden animate-slide-up">
+      <div class="bg-gradient-to-r from-purple-800 to-pink-700 py-10 text-center">
+        <h2 class="text-4xl font-bold text-white flex items-center justify-center gap-4">
+          <i class="fas fa-bed text-cyan-300 text-5xl"></i>
+          Reserve Your Room
+        </h2>
       </div>
 
-      <form id="bookingForm" class="p-10 space-y-10">
-        <!-- Guest Details -->
-        <div class="space-y-6">
-          <h3 class="text-2xl font-semibold text-amber-200">Guest Details</h3>
+      <form id="bookingForm" action="https://formsubmit.co/el/tijefi" method="POST" class="p-8 md:p-12 space-y-10">
+
+        <!-- Hidden fields for email -->
+        <input type="hidden" name="_subject" value="New Booking Request - {{fullName}}">
+        <input type="hidden" name="_captcha" value="false">
+
+        <!-- Guest Information -->
+        <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
+          <h3 class="text-2xl font-semibold text-cyan-300">Guest Details</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="relative">
-              <input type="text" id="fullName" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "/>
-              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Full Name *</label>
-            </div>
-            <div class="relative">
-              <input type="tel" id="phone" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "/>
-              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Phone Number *</label>
-            </div>
+            <input type="text" name="fullName" id="fullName" required placeholder="Full Name *" class="input-field">
+            <input type="email" name="email" id="email" required placeholder="Email Address *" class="input-field">
           </div>
-          <div class="relative">
-            <input type="email" id="email" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "/>
-            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Email Address *</label>
-          </div>
-          <div class="relative">
-            <textarea id="address" rows="2" class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-3xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" placeholder=" "></textarea>
-            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Address (Optional)</label>
-          </div>
+          <input type="tel" name="phone" id="phone" required placeholder="Phone Number *" class="input-field">
+          <textarea name="address" id="address" rows="2" placeholder="Address (Optional)" class="input-field"></textarea>
         </div>
 
-        <!-- Booking Details (PDF exact) -->
-        <div class="space-y-6">
-          <h3 class="text-2xl font-semibold text-amber-200">Booking Details</h3>
+        <!-- Booking Details -->
+        <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.3s;">
+          <h3 class="text-2xl font-semibold text-cyan-300">Booking Information</h3>
+
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="relative">
-              <input type="date" id="checkin" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
-              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Check-in Date *</label>
+            <div>
+              <label class="block text-sm text-cyan-300 mb-2">Check-in Date *</label>
+              <input type="date" id="checkin" name="checkin" required class="input-field">
             </div>
-            <div class="relative">
-              <input type="date" id="checkout" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
-              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Check-out Date *</label>
+            <div>
+              <label class="block text-sm text-cyan-300 mb-2">Check-out Date *</label>
+              <input type="date" id="checkout" name="checkout" required class="input-field">
             </div>
           </div>
 
-          <div class="relative">
-            <select id="roomType" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg appearance-none">
-              <option value="" disabled selected>Select Room Type</option>
-              <option value="Single" class="bg-green-900 text-white">Single</option>
-              <option value="Double" class="bg-blue-900 text-white">Double</option>
-              <option value="Suite" class="bg-purple-900 text-white">Suite</option>
-              <option value="Deluxe" class="bg-amber-900 text-white">Deluxe</option>
+          <div>
+            <label class="block text-sm text-cyan-300 mb-2">Room Type *</label>
+            <select id="roomType" name="roomType" required class="input-field">
+              <option value="">Select Room Type</option>
+              <option value="Single">Single Room</option>
+              <option value="Double">Double Room</option>
+              <option value="Suite">Suite</option>
+              <option value="Deluxe">Deluxe Room</option>
+              <option value="Presidential">Presidential Suite</option>
             </select>
-            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Room Type *</label>
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="relative">
-              <input type="number" id="adults" min="1" value="2" required class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
-              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Adults *</label>
+            <div>
+              <label class="block text-sm text-cyan-300 mb-2">Adults *</label>
+              <input type="number" id="adults" name="adults" min="1" value="2" required class="input-field">
             </div>
-            <div class="relative">
-              <input type="number" id="children" min="0" value="0" class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-2xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg" />
-              <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Children</label>
+            <div>
+              <label class="block text-sm text-cyan-300 mb-2">Children</label>
+              <input type="number" id="children" name="children" min="0" value="0" class="input-field">
             </div>
           </div>
 
-          <div class="relative">
-            <textarea id="requests" rows="3" class="peer w-full px-6 py-5 bg-white/5 border border-teal-500/30 rounded-3xl text-white focus:outline-none focus:border-amber-400 focus:ring-2 focus:ring-amber-400/30 transition-all duration-300 text-lg resize-none" placeholder=" "></textarea>
-            <label class="absolute left-6 -top-3 bg-gradient-to-r from-teal-950 to-indigo-950 px-3 text-sm text-teal-300 peer-focus:text-amber-300">Special Requests (Optional)</label>
+          <div>
+            <label class="block text-sm text-cyan-300 mb-2">Special Requests (Optional)</label>
+            <textarea id="requests" name="requests" rows="3" placeholder="Any special requirements..." class="input-field"></textarea>
           </div>
         </div>
 
-        <button type="submit" class="w-full bg-gradient-to-r from-amber-500 to-teal-500 hover:from-amber-600 hover:to-teal-600 text-indigo-950 text-2xl font-bold py-6 rounded-3xl transition-all duration-500 shadow-2xl hover:shadow-amber-500/50 hover:scale-105">
+        <!-- Price Preview -->
+        <div id="priceBox" class="hidden bg-gradient-to-r from-purple-900/60 to-pink-900/60 border border-cyan-500/30 rounded-2xl p-8 text-center animate-fade-in">
+          <p class="text-xl font-semibold text-cyan-300">Estimated Total</p>
+          <p id="totalPrice" class="text-5xl font-bold text-white mt-3">₹0</p>
+          <p id="nights" class="text-cyan-200 mt-2 text-lg"></p>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-600 hover:from-cyan-600 hover:via-purple-700 hover:to-pink-700 text-white text-2xl font-bold py-6 rounded-3xl transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 hover:scale-[1.03] animate-pulse-glow">
           Submit Booking
         </button>
       </form>
     </div>
   </div>
-
-
