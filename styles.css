@@ -44,4 +44,16 @@
   backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.12);
 }
+/* Input fields */
+.input-field {
+  width: 100%;
+  padding: 1.1rem 1.3rem;
+  background: rgba(51, 65, 85, 0.55);
+  border: 1px solid rgba(165, 180, 252, 0.35);
+  border-radius: 1rem;
+  color: white;
+  font-size: 1.05rem;
+  transition: all 0.3s ease;
+}
+
 
