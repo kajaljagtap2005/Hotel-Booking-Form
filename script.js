@@ -29,3 +29,24 @@ function calculatePrice() {
   const ci = new Date(checkin.value);
   const co = new Date(checkout.value);
   const nights = Math.ceil((co - ci) / (1000 * 60 * 60 * 24));
+
+  if (nights <= 0) {
+    priceBox.classList.add('hidden');
+    return;
+  }
+
+  const prices = {
+    Single: 4999,
+    Double: 7999,
+    Suite: 14999,
+    Deluxe: 11999,
+    Presidential: 24999
+  };
+
+  const total = prices[roomType.value] * nights;
+
+  totalPrice.textContent = `₹${total.toLocaleString('en-IN')}`;
+  nightsEl.textContent = `${nights} night${nights > 1 ? 's' : ''} • ${roomType.value}`;
+  priceBox.classList.remove('hidden');
+}
+
