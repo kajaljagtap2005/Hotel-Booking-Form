@@ -56,4 +56,15 @@
   transition: all 0.3s ease;
 }
 
+.input-field:focus {
+  outline: none;
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.25);
+  background: rgba(51, 65, 85, 0.85);
+}
 
+/* Responsive */
+@media (max-width: 640px) {
+  .max-w-4xl { max-width: 100%; }
+  .p-8, .md\:p-12 { padding: 2rem 1.25rem; }
+}
