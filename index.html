@@ -3,71 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Hotel Booking Form – Internship Task</title>
-
-  <!-- Tailwind CSS CDN -->
+  <title> Horizon Hotel - Booking</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Font Awesome icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-gradient-to-br from-indigo-950 via-purple-950 to-pink-950 min-h-screen text-gray-100">
+<body class="bg-gradient-to-br from-indigo-950 via-purple-950 to-pink-950 min-h-screen text-gray-100 font-sans">
 
-  <div class="max-w-4xl mx-auto px-5 py-12">
-
-    <div class="text-center mb-12 animate-fade-in-down">
-      <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-        Luxe Horizon Hotel
+  <div class="max-w-4xl mx-auto px-4 py-12">
+    <div class="text-center mb-10 animate-fade-in-down">
+      <h1 class="text-5xl md:text-6xl font-extrabold bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent pb-2">
+         Horizon Hotel
       </h1>
-      <p class="text-xl text-cyan-300 mt-3">Book Your Dream Stay</p>
+      <p class="text-xl text-cyan-300 mt-2">Book Your Dream Stay</p>
     </div>
 
-    <div class="glass-card rounded-3xl shadow-2xl overflow-hidden animate-slide-up">
-      <div class="bg-gradient-to-r from-purple-800 to-pink-700 py-10 text-center">
-        <h2 class="text-4xl font-bold text-white flex items-center justify-center gap-4">
-          <i class="fas fa-bed text-cyan-300 text-5xl"></i>
+    <div class="glass-card rounded-[2.5rem] shadow-2xl overflow-hidden animate-slide-up">
+      <div class="bg-gradient-to-r from-purple-800 to-pink-700 py-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white flex items-center justify-center gap-4">
+          <i class="fas fa-bed text-cyan-300"></i>
           Reserve Your Room
         </h2>
       </div>
 
-      <form id="bookingForm" action="https://formsubmit.co/el/tijefi" method="POST" class="p-8 md:p-12 space-y-10">
-
-        <!-- Hidden fields for email -->
-        <input type="hidden" name="_subject" value="New Booking Request - {{fullName}}">
+      <form id="bookingForm" action="https://api.web3forms.com/submit" method="POST" class="p-6 md:p-12 space-y-10">
+        <input type="hidden" name="access_key" value="2786d398-0c26-4a2c-b9a3-6f0f9b86ada8">
+        <input type="hidden" name="_subject" value="New Booking Request">
         <input type="hidden" name="_captcha" value="false">
 
-        <!-- Guest Information -->
-        <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.2s;">
-          <h3 class="text-2xl font-semibold text-cyan-300">Guest Details</h3>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section class="space-y-6">
+          <h3 class="text-2xl font-semibold text-cyan-300 border-b border-cyan-500/20 pb-2">Guest Details</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <input type="text" name="fullName" id="fullName" required placeholder="Full Name *" class="input-field">
             <input type="email" name="email" id="email" required placeholder="Email Address *" class="input-field">
           </div>
           <input type="tel" name="phone" id="phone" required placeholder="Phone Number *" class="input-field">
           <textarea name="address" id="address" rows="2" placeholder="Address (Optional)" class="input-field"></textarea>
-        </div>
+        </section>
 
-        <!-- Booking Details -->
-        <div class="space-y-6 animate-fade-in-up" style="animation-delay: 0.3s;">
-          <h3 class="text-2xl font-semibold text-cyan-300">Booking Information</h3>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm text-cyan-300 mb-2">Check-in Date *</label>
+        <section class="space-y-6">
+          <h3 class="text-2xl font-semibold text-cyan-300 border-b border-cyan-500/20 pb-2">Booking Information</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-2">
+              <label class="text-sm text-cyan-300 ml-1">Check-in Date *</label>
               <input type="date" id="checkin" name="checkin" required class="input-field">
             </div>
-            <div>
-              <label class="block text-sm text-cyan-300 mb-2">Check-out Date *</label>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm text-cyan-300 ml-1">Check-out Date *</label>
               <input type="date" id="checkout" name="checkout" required class="input-field">
             </div>
           </div>
 
-          <div>
-            <label class="block text-sm text-cyan-300 mb-2">Room Type *</label>
-            <select id="roomType" name="roomType" required class="input-field">
-              <option value="">Select Room Type</option>
+          <div class="flex flex-col gap-2">
+            <label class="text-sm text-cyan-300 ml-1">Room Type *</label>
+            <select id="roomType" name="roomType" required class="input-field appearance-none">
+              <option value="" disabled selected>Select Room Type</option>
               <option value="Single">Single Room</option>
               <option value="Double">Double Room</option>
               <option value="Suite">Suite</option>
@@ -76,49 +66,47 @@
             </select>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div>
-              <label class="block text-sm text-cyan-300 mb-2">Adults *</label>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="flex flex-col gap-2">
+              <label class="text-sm text-cyan-300 ml-1">Adults *</label>
               <input type="number" id="adults" name="adults" min="1" value="2" required class="input-field">
             </div>
-            <div>
-              <label class="block text-sm text-cyan-300 mb-2">Children</label>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm text-cyan-300 ml-1">Children</label>
               <input type="number" id="children" name="children" min="0" value="0" class="input-field">
             </div>
           </div>
 
-          <div>
-            <label class="block text-sm text-cyan-300 mb-2">Special Requests (Optional)</label>
+          <div class="flex flex-col gap-2">
+            <label class="text-sm text-cyan-300 ml-1">Special Requests (Optional)</label>
             <textarea id="requests" name="requests" rows="3" placeholder="Any special requirements..." class="input-field"></textarea>
           </div>
+        </section>
+
+        <div id="priceBox" class="hidden bg-white/5 border border-cyan-500/30 rounded-2xl p-6 text-center animate-fade-in">
+          <p class="text-lg font-medium text-cyan-300">Estimated Total</p>
+          <p id="totalPrice" class="text-4xl font-bold text-white mt-1">₹0</p>
+          <p id="nights" class="text-cyan-100/70 mt-1 text-sm italic"></p>
         </div>
 
-        <!-- Price Preview -->
-        <div id="priceBox" class="hidden bg-gradient-to-r from-purple-900/60 to-pink-900/60 border border-cyan-500/30 rounded-2xl p-8 text-center animate-fade-in">
-          <p class="text-xl font-semibold text-cyan-300">Estimated Total</p>
-          <p id="totalPrice" class="text-5xl font-bold text-white mt-3">₹0</p>
-          <p id="nights" class="text-cyan-200 mt-2 text-lg"></p>
+        <div class="pt-4">
+          <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-600 hover:from-cyan-400 hover:via-purple-500 hover:to-pink-500 text-white text-xl font-bold py-5 rounded-2xl transition-all duration-300 shadow-xl hover:shadow-cyan-500/20 active:scale-95">
+            Submit Booking
+          </button>
         </div>
-
-        <!-- Submit Button -->
-        <button type="submit" class="w-full bg-gradient-to-r from-cyan-500 via-purple-600 to-pink-600 hover:from-cyan-600 hover:via-purple-700 hover:to-pink-700 text-white text-2xl font-bold py-6 rounded-3xl transition-all duration-500 shadow-2xl hover:shadow-cyan-500/50 hover:scale-[1.03] animate-pulse-glow">
-          Submit Booking
-        </button>
       </form>
     </div>
   </div>
-  <!-- Success Modal -->
-  <div id="successModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4">
-    <div class="bg-gradient-to-br from-purple-900 to-pink-900 rounded-3xl p-12 text-center max-w-lg border border-cyan-500/40 animate-bounce-in">
-      <i class="fas fa-circle-check text-8xl text-cyan-300 mb-6 animate-check-mark"></i>
-      <h3 class="text-4xl font-bold text-white">Form Submitted Successfully!</h3>
-      <p class="text-cyan-200 text-xl mt-4">Your booking request has been sent.<br>We'll contact you soon.</p>
-      <button onclick="closeModal()" class="mt-10 px-12 py-5 bg-cyan-500 hover:bg-cyan-600 text-indigo-950 rounded-2xl font-bold text-xl transition">
-        Done
-      </button>
+
+  <div id="successModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-sm flex items-center justify-center z-50 p-6">
+    <div class="bg-indigo-950 border border-cyan-500/30 rounded-[2rem] p-10 text-center max-w-md animate-bounce-in">
+      <i class="fas fa-check-circle text-7xl text-cyan-400 mb-4"></i>
+      <h3 class="text-3xl font-bold text-white">Success!</h3>
+      <p class="text-gray-300 mt-2">Your booking request has been received. We'll be in touch shortly.</p>
+      <button onclick="closeModal()" class="mt-8 w-full py-3 bg-cyan-500 hover:bg-cyan-400 text-indigo-950 font-bold rounded-xl transition">Close</button>
     </div>
   </div>
 
-  <script src="js/script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
